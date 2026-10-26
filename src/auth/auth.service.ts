@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import {
-  ConflictException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { DatabaseService } from 'src/core/database/database.service';
 import { RegisterRequestDto } from './dto/register-request.dto';
@@ -16,12 +12,10 @@ import { LoginResponseDto } from './dto/login-response.dto';
 export class AuthService {
   constructor(
     private readonly databaseService: DatabaseService,
-    private readonly jwtService: JwtService,
+    private readonly jwtService: JwtService
   ) {}
 
-  async register(
-    requestBody: RegisterRequestDto,
-  ): Promise<RegisterResponseDto> {
+  async register(requestBody: RegisterRequestDto): Promise<RegisterResponseDto> {
     const { password, email, name, surname } = requestBody;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const existing = await this.databaseService.user.findUnique({
