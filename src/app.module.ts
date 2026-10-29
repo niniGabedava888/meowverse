@@ -9,6 +9,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { CatModule } from './cat/cat.module';
+import { SitterProfileModule } from './sitter-profile/sitter-profile.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CatModule } from './cat/cat.module';
     UsersModule,
     JwtModule,
     CatModule,
+    SitterProfileModule,
   ],
   controllers: [AppController],
   providers: [

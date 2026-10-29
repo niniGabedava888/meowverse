@@ -23,6 +23,22 @@ model User {
   updatedAt DateTime @updatedAt
 
   cats Cat[]
+  sitterProfile SitterProfile?
+}
+
+model SitterProfile {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @unique
+  bio        String
+  hourlyRate Decimal?
+  city String
+  address String?
+  experienceInYears Int?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user       User     @relation(fields: [userId], references: [id])
 }
 
 model Cat {
